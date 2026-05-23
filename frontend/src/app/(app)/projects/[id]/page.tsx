@@ -89,7 +89,7 @@ export default function ProjectPage() {
     }
   }, [socket, id, selectedTask])
 
-  const myMember = project?.members.find(m => m.user_id === user?.id)
+  const myMember = project?.members.find(m => m.user.id === user?.id)
   const isAdmin = project?.owner_id === user?.id || myMember?.role === 'admin'
 
   if (projLoading) {
