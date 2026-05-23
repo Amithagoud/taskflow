@@ -796,24 +796,24 @@ function MembersTab({ project, isAdmin, userId }: { project: Project; isAdmin: b
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-slate-900">{m.user.name}</p>
-                  {m.user_id === project.owner_id && (
+                  {m.user.id === project.owner_id && (
                     <span className="badge text-amber-600 bg-amber-50 border-amber-200 text-[10px]">Owner</span>
                   )}
                 </div>
                 <p className="text-xs text-slate-500">{m.user.email}</p>
               </div>
-              {isAdmin && m.user_id !== project.owner_id && (
+              {isAdmin && m.user.id !== project.owner_id && (
                 <div className="flex items-center gap-2">
                   <select
                     className="input py-1 text-xs w-24"
                     value={m.role}
-                    onChange={e => handleRoleChange(m.user_id, e.target.value)}
+                    onChange={e => handleRoleChange(m.user.id, e.target.value)}
                   >
                     <option value="member">Member</option>
                     <option value="admin">Admin</option>
                   </select>
                   <button
-                    onClick={() => handleRemove(m.user_id)}
+                    onClick={() => handleRemove(m.user.id)}
                     className="p-1.5 rounded hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors"
                   >
                     <X className="w-3.5 h-3.5" />
